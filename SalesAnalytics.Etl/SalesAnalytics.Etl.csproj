@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-SalesAnalytics.Etl-a76e81ef-77b6-45f9-b94b-3da922656591</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\customers.csv" />
+    <None Remove="Data\orders.csv" />
+    <None Remove="Data\order_details.csv" />
+    <None Remove="Data\productos.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\customers.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\orders.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\order_details.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\productos.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SalesAnalytics.Application\SalesAnalytics.Application.csproj" />
+    <ProjectReference Include="..\SalesAnalytics.Persistence\SalesAnalytics.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
