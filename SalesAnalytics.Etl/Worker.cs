@@ -1,9 +1,6 @@
 using System.Diagnostics;
-using Microsoft.Extensions.Logging;
 using SalesAnalytics.Application.Abstractions.Extract;
 using SalesAnalytics.Application.Abstractions.Staging;
-using SalesAnalytics.Application.Models.Raw;
-using System.Linq;
 using SalesAnalytics.Application.Models.Raw;
 
 namespace SalesAnalytics.Etl;
@@ -49,7 +46,7 @@ public sealed class Worker : BackgroundService
 
         _logger.LogInformation("Extrayendo OrderDetails...");
         var detailRows = await _details.ExtractAsync(stoppingToken);
-        _logger.LogInformation("OrderDetails: {Count} registros extraídos.", detailRows.Count);
+        _logger.LogInformation("OrderDetails: {Count} registros extraÃ­dos.", detailRows.Count);
 
         var normalizedDetails = NormalizeOrderDetails(detailRows);
         _logger.LogInformation(
@@ -96,7 +93,7 @@ public sealed class Worker : BackgroundService
         _logger.LogInformation("Extrayendo {Name}...", name);
         var rows = await extractor.ExtractAsync(cancellationToken);
 
-        _logger.LogInformation("{Name}: {Count} registros extraídos.", name, rows.Count);
+        _logger.LogInformation("{Name}: {Count} registros extraÃ­dos.", name, rows.Count);
 
         await writer(rows);
 

@@ -48,12 +48,13 @@ public sealed class SqlStagingWriter : IStagingWriter
 
     public async Task RunWarehouseProceduresAsync(CancellationToken cancellationToken = default)
     {
+        // En esta etapa (carga de dimensiones), ejecutamos solo los SP de dimensiones.
+        // La carga de hechos (FactVentas) puede ejecutarse en la siguiente práctica.
         string[] procedures =
         {
-            "dbo.sp_PoblarDimCliente",
-            "dbo.sp_PoblarDimProducto",
             "dbo.sp_PoblarDimFecha",
-            "dbo.sp_PoblarFactVentas"
+            "dbo.sp_PoblarDimCliente",
+            "dbo.sp_PoblarDimProducto"
         };
 
         await using var conn = new SqlConnection(_connectionString);

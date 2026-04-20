@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace SalesAnalytics.Domain.Entities;
 
-namespace SalesAnalytics.Domain.Entities
+/// <summary>
+/// Detalle de orden (línea de venta) - Entidad de negocio.
+/// </summary>
+public sealed class OrderDetail
 {
-    internal class OrderDetail
-    {
-    }
+    public int OrderId { get; set; }
+    public int ProductId { get; set; }
+    public int Quantity { get; set; }
+    public decimal? TotalPrice { get; set; }
 }
